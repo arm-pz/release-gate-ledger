@@ -1,0 +1,25 @@
+--- a/SKILL.md
++++ b/SKILL.md
+@@ -161,3 +161,22 @@
+ - `scripts/scaffold_run.mjs` - run directory, per-group result rows, briefs, env template, gitignore guard.
+ - `scripts/check_results.mjs` - completeness, evidence, negative-control, and credential-leak gate.
+ - `assets/` - the results table and dispatch brief templates the scaffold renders, plus `negative-control.mjs`, the harness you copy into the app to prove each fix is load-bearing.
++
++## Optional: write your own rows into a release-gate ledger
++
++When this run is part of a `release-gate` sequence and the gate supplied `--gate-ledger <run-dir>`,
++append your rows as you finish instead of waiting for the gate to copy them:
++
++```
++node "<gate-skill-dir>/scripts/gate_record.mjs" lane <run-dir> --lane app-tests --target <host> --verdict <v> --sha <git-head>
++```
++
++Your verdict stays in your own vocabulary (ready / HOLD). The ledger never translates it, and nothing here
++adds a check, a severity or a request to this skill.
++
++One row per finding (`--id REDTEAM-S<nn>`, plus route, severity, remediation and the evidence reference from
++Finding record) and a `--touches` value of `data`, `money`, `role`, `none` or `unknown` — whether
++the finding reaches another user's data, money or role boundary. Fill it from what the finding
++actually says; `none` is a claim, not a default.
++
++Without `--gate-ledger` nothing changes: report as usual and let the gate copy your table.

@@ -1,0 +1,9 @@
+{
+  "name": "release-gate-ledger",
+  "version": "0.1.0",
+  "description": "Runs the three pre-ship lanes and has each write its own rows into one ledger through a validating recorder, then computes one release posture (HOLD or ready) by script. Ships the three upstream patches, unapplied.",
+  "author": {
+    "name": "Abdul Rahman P Z"
+  },
+  "repository": "https://github.com/arm-pz/release-gate-ledger"
+}
