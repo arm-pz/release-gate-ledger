@@ -4,17 +4,18 @@ description: >-
   Runs the three pre-launch passes in order and has each lane write its own rows into one
   release-gate ledger through a validating recorder, instead of a chair copying tables after
   the fact. Produces three separate verdicts and one release posture (HOLD or ready) computed
-  by script. Use when someone asks "is this safe to launch", "ready to ship", "should we
-  deploy", "give me a go/no-go", or before any deploy of a site or client app you own or are
-  authorized to test. Ships the three upstream patches that teach web-preflight,
+  by script. Use when the three lane skills carry the ledger patches below, or when someone
+  asks for the ledger variant of the release gate, for a site or client app you own or are
+  authorized to test; a plain go/no-go belongs to release-gate-chair. Ships the three upstream patches that teach web-preflight,
   pre-ship-security-red-team and pre-ship-performance-audit to append their own rows — unapplied,
   because those are published skills. A pass in one lane never covers another. Not for a
-  single-lane check, not for penetration testing of production, not for performing the deploy.
+  single-lane check, not for the default go/no-go (use release-gate-chair), not for
+  penetration testing of production, not for performing the deploy.
 argument-hint: <production URL> [--app <isolated/local URL>] [--project <path>]
 version: 0.1.0
 ---
 
-# Release gate (ledger variant)
+# Release gate ledger
 
 Same lanes, same ledger, same posture rule as the chair — one difference: **rows are written
 through `scripts/gate_record.mjs`, which rejects a bad enum at the moment it is written**, by the
