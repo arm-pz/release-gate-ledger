@@ -99,7 +99,7 @@ the live host in a new run directory. It can move `ready` to `HOLD`; it cannot m
 - Merge scores or average severities; three lanes keep three verdicts.
 - Turn an unrun lane into a pass, red-team production, or reproduce a secret in the register.
 
-Read `caffeinity-stack` before reporting Caffeinity work. W3 in `caffeinity-routing` is the sequence
+If a `caffeinity-stack` skill is installed, read it before reporting Caffeinity work. W3 in `caffeinity-routing` is the sequence
 this skill implements.
 
 ## Verify before trusting
